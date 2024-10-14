@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ topic.capitalize() }} - DSA Learning Platform</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li>DSA
+                <ul>
+                    {% for topic, details in dsa_content.items() %}
+                    <li><a href="/topic/{{ topic }}">{{ topic.capitalize() }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="topic-details">
+        <h1>{{ topic.capitalize() }}</h1>
+        <p>{{ details.description }}</p>
+
+        <h2>Subtopics</h2>
+        <ul>
+            <!-- Loop through subtopics -->
+            {% for subtopic, subdesc in details.topics.items() %}
+            <li>
+                <h3>{{ subtopic.capitalize() }}</h3>
+                <p>{{ subdesc }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <script src="../static/js/app.js"></script>
+</body>
+</html>

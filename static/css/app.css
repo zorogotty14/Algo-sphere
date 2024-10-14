@@ -1,0 +1,88 @@
+/* Container for the entire layout */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Flexbox layout for two sections: Output and Chat */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Output area for topic, explanation, code, and video */
+.output-area {
+    width: 65%;  /* Take up 65% of the width */
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat area for messages and input */
+.chat-container {
+    width: 30%;  /* Take up 30% of the width */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #eaeaea;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Chatbox styling */
+#chat-box {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Input area for typing messages */
+.input-area {
+    display: flex;
+    align-items: center;
+}
+
+#user-input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#send-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Code block styling */
+pre {
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Video section */
+#video-section {
+    margin-top: 20px;
+}
+
+#generated-video {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}

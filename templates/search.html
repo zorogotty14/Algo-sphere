@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Learning Platform</title>
+    <link rel="stylesheet" href="../static/css/app.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <!-- Include header -->
+    {% include 'header.html' %}
+
+    <div class="container">
+        <h1>DSA Learning Platform</h1>
+        
+        <div class="content-wrapper">
+            <!-- Center Section: Topic, Explanation, Code, and Video -->
+            <div class="output-area" id="output-area">
+                <h2 id="topic-title">Topic Name</h2>
+                <div id="explanation-section">
+                    <h3>Explanation:</h3>
+                    <p id="explanation-text">{{ explanation }}</p>
+                </div>
+                <div id="code-section">
+                    <h3>Code:</h3>
+                    <pre><code id="code-block">{{ code }}</code></pre>
+                </div>
+                <div id="video-section">
+                    <h3>Video:</h3>
+                    <video id="generated-video" controls>
+                        <source src="../static/videos/BFSVisualization.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Right Side: Chat Section -->
+            <div class="chat-container">
+                <div id="chat-box">
+                    <!-- This is where the conversation will be displayed -->
+                </div>
+
+                <!-- Input area -->
+                <div class="input-area">
+                    <textarea id="user-input" placeholder="Ask a question..."></textarea>
+                    <button id="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include footer -->
+    {% include 'footer.html' %}
+
+    <script src="../static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Learning Platform - Home</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/app.css">
+</head>
+<body>
+    <!-- Include header -->
+    {% include 'header.html' %}
+
+    <div class="container">
+        <!-- Search bar at the top -->
+        <form action="/search" method="POST">
+            <div class="search-bar">
+                <input type="text" name="search-query" id="search-input" placeholder="Search for DSA topics..." required>
+                <button type="submit" id="search-button">Search</button>
+            </div>
+        </form>
+
+        <!-- Welcome text -->
+        <h1>Welcome to the DSA Learning Platform!</h1>
+        <p>Select a topic to get started with learning Data Structures and Algorithms.</p>
+        
+
+        {% for category, details in dsa_content.items() %}
+        <div class="topics-section">
+            <!-- Category Title -->
+            <h2>{{ category | capitalize }}</h2>
+    
+            <!-- Category Image -->
+            <img src="{{ details.image }}" alt="{{ category | capitalize }} Image" style="width:100%; height:auto;">
+    
+            <!-- Category Description -->
+            <p>{{ details.description }}</p>
+    
+            <!-- YouTube Video Embed -->
+            <iframe width="100%" height="400" 
+                src="https://www.youtube.com/embed/{{ details.video | replace('https://www.youtube.com/watch?v=', '') }}" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+    
+            <!-- Loop through topics within each category -->
+            {% for topic_name, topic_details in details.topics.items() %}
+                <!-- Topic Name -->
+                <h3>{{ topic_name | replace('_', ' ') | capitalize }}</h3>
+    
+                <!-- If the topic details is a string, display it directly -->
+                {% if topic_details is string %}
+                    <p>{{ topic_details }}</p>
+                {% else %}
+                    <!-- If the topic contains subtopics, loop through them -->
+                    <ul>
+                        {% for subtopic, description in topic_details.items() %}
+                            <li>
+                                <strong>{{ subtopic | replace('_', ' ') | capitalize }}:</strong> {{ description }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+    
+
+    </div>
+
+    <!-- Include footer -->
+    {% include 'footer.html' %}
+</body>
+</html>
